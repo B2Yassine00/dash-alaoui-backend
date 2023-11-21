@@ -27,6 +27,7 @@ public class Article {
     private String body;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "article")
+    @ToString.Exclude
     private List<Commentaire> commentaires;
 
     @Column(name = "likes")
