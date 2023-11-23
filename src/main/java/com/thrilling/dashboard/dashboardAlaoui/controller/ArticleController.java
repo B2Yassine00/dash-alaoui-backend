@@ -2,6 +2,7 @@ package com.thrilling.dashboard.dashboardAlaoui.controller;
 
 import com.thrilling.dashboard.dashboardAlaoui.DTO.ListedArticle;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.PostedArticle;
+import com.thrilling.dashboard.dashboardAlaoui.entities.Article;
 import com.thrilling.dashboard.dashboardAlaoui.services.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,10 @@ public class ArticleController {
     @GetMapping("/retrieve-to-show")
     public List<ListedArticle> retrieveToShow(){
         return service.listerArticle();
+    }
+
+    @GetMapping("/retrieve-article/{id}")
+    public Article retrieveArticle(@PathVariable int id){
+        return service.findArticleById(id);
     }
 }

@@ -7,6 +7,7 @@ import com.thrilling.dashboard.dashboardAlaoui.repositories.ArticleRepository;
 import com.thrilling.dashboard.dashboardAlaoui.repositories.CommentaireRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,6 +33,12 @@ public class ArticleService {
         return repository.save(article1);
     }
 
+    public Article findArticleById(Integer id){
+        if(repository.findById(id).isPresent()){
+            return repository.findById(id).get();
+        }
+        throw new RuntimeException("Not Found");
+    }
     public List<ListedArticle> listerArticle(){
         List<Article> articles = repository.findAll();
         List<ListedArticle> listedArticles = new ArrayList<>();
