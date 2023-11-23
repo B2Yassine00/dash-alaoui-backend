@@ -21,5 +21,7 @@ public class ListedComment {
 
     private String article;
 
+    private boolean visibility;
+
     private Date updated_at;
 }

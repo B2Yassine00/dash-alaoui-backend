@@ -41,4 +41,7 @@ public class Commentaire {
     @Column(name = "date_modification")
     @UpdateTimestamp
     private Date updated_at;
+
+    @Column(name = "visibility")
+    private boolean visibility;
 }

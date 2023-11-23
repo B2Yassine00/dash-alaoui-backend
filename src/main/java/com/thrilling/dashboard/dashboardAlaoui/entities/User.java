@@ -20,6 +20,15 @@ public class User {
     @Column(name = "user_id")
     private Integer id;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email")
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Commentaire> commentaires;
 }
