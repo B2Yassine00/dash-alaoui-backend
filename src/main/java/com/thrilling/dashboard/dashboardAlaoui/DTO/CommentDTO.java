@@ -7,8 +7,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class PostedComment {
+public class CommentDTO {
 
+    private Integer comment_id;
     private Integer article_id;
     private String first_name;
     private String last_name;

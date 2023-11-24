@@ -4,6 +4,7 @@ import com.thrilling.dashboard.dashboardAlaoui.entities.Article;
 import com.thrilling.dashboard.dashboardAlaoui.entities.Commentaire;
 import com.thrilling.dashboard.dashboardAlaoui.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface CommentaireRepository extends JpaRepository<Commentaire,Integer
     long countByArticle(Article article);
 
     List<Commentaire> findAllByArticle(Article article);
+
 }

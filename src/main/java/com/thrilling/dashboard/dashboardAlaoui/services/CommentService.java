@@ -1,5 +1,6 @@
 package com.thrilling.dashboard.dashboardAlaoui.services;
 
+import com.thrilling.dashboard.dashboardAlaoui.DTO.CommentDTO;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.ListedComment;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.PostedComment;
 import com.thrilling.dashboard.dashboardAlaoui.entities.Article;
@@ -38,8 +39,14 @@ public class CommentService {
         return listedComments;
     }
 
-    public List<Commentaire> listCommentByArticle(Article article){
-        return commentaireRepository.findAllByArticle(article);
+    public List<CommentDTO> listCommentByArticle(Article article){
+        List<Commentaire> commentaires = commentaireRepository.findAllByArticle(article);
+        List<CommentDTO> comments = new ArrayList<>();
+        for (Commentaire commentaire:commentaires){
+            CommentDTO commentDTO = new CommentDTO(commentaire.getId(),commentaire.getArticle().getId(),commentaire.getUser().getFirstName(),commentaire.getUser().getLastName(),commentaire.getUser().getEmail(), commentaire.getBody(), commentaire.isVisibility());
+            comments.add(commentDTO);
+        }
+        return comments;
     }
 
     public Commentaire postComment(PostedComment postedComment){
@@ -55,6 +62,7 @@ public class CommentService {
             commentaire.setBody(postedComment.getBody());
             commentaire.setUser(user);
             commentaire.setLikes(0);
+            commentaire.setVisibility(postedComment.getActive());
             return commentaireRepository.save(commentaire);
         }else {
             User userito = userRepository.findByEmail(postedComment.getEmail()).get();

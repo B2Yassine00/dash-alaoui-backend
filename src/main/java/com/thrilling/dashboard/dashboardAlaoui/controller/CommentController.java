@@ -1,5 +1,6 @@
 package com.thrilling.dashboard.dashboardAlaoui.controller;
 
+import com.thrilling.dashboard.dashboardAlaoui.DTO.CommentDTO;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.ListedComment;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.PostedComment;
 import com.thrilling.dashboard.dashboardAlaoui.entities.Article;
@@ -31,7 +32,7 @@ public class CommentController {
     }
 
     @GetMapping("/list-comments-by-article/{id}")
-    public List<Commentaire> listCommentsByArticle(@PathVariable Integer id){
+    public List<CommentDTO> listCommentsByArticle(@PathVariable Integer id){
         Article article = articleService.findArticleById(id);
         return commentService.listCommentByArticle(article);
     }
