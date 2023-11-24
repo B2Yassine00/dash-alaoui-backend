@@ -6,8 +6,12 @@ import com.thrilling.dashboard.dashboardAlaoui.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
+
 @CrossOrigin("http://localhost:4200")
 public interface CommentaireRepository extends JpaRepository<Commentaire,Integer> {
     long countByUser(User user);
     long countByArticle(Article article);
+
+    List<Commentaire> findAllByArticle(Article article);
 }
