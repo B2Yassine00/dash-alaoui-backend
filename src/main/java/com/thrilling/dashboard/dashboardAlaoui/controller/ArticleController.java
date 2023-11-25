@@ -1,5 +1,6 @@
 package com.thrilling.dashboard.dashboardAlaoui.controller;
 
+import com.thrilling.dashboard.dashboardAlaoui.DTO.ArticleDTO;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.ListedArticle;
 import com.thrilling.dashboard.dashboardAlaoui.DTO.PostedArticle;
 import com.thrilling.dashboard.dashboardAlaoui.entities.Article;
@@ -30,7 +31,8 @@ public class ArticleController {
     }
 
     @GetMapping("/retrieve-article/{id}")
-    public Article retrieveArticle(@PathVariable int id){
-        return service.findArticleById(id);
+    public ArticleDTO retrieveArticle(@PathVariable int id){
+        Article article = service.findArticleById(id);
+        return new ArticleDTO(article.getId(),article.getTitle(),article.getBody(), article.getLikes(),article.isVisibility(),article.getCreated_at(),article.getUpdated_at());
     }
 }

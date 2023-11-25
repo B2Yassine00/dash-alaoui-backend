@@ -9,15 +9,14 @@ import java.util.Date;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class CommentDTO {
+public class ArticleDTO {
 
-    private Integer comment_id;
-    private Integer article_id;
-    private String first_name;
-    private String last_name;
-    private String email;
+    private Integer id;
+    private String title;
     private String body;
-    private Boolean active;
+    private int likes;
+    private boolean visibility;
+    private Date created_at;
     private Date updated_at;
 
 }

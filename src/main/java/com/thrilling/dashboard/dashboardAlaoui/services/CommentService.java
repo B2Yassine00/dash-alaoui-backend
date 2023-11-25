@@ -43,7 +43,7 @@ public class CommentService {
         List<Commentaire> commentaires = commentaireRepository.findAllByArticle(article);
         List<CommentDTO> comments = new ArrayList<>();
         for (Commentaire commentaire:commentaires){
-            CommentDTO commentDTO = new CommentDTO(commentaire.getId(),commentaire.getArticle().getId(),commentaire.getUser().getFirstName(),commentaire.getUser().getLastName(),commentaire.getUser().getEmail(), commentaire.getBody(), commentaire.isVisibility());
+            CommentDTO commentDTO = new CommentDTO(commentaire.getId(),commentaire.getArticle().getId(),commentaire.getUser().getFirstName(),commentaire.getUser().getLastName(),commentaire.getUser().getEmail(), commentaire.getBody(), commentaire.isVisibility(),commentaire.getCreated_at());
             comments.add(commentDTO);
         }
         return comments;
@@ -74,5 +74,20 @@ public class CommentService {
             commentaire.setLikes(0);
             return commentaireRepository.save(commentaire);
         }
+    }
+
+    public String hideComment(Integer id){
+        Commentaire commentaire = commentaireRepository.findById(id).get();
+        commentaire.setVisibility(false);
+        commentaireRepository.save(commentaire);
+        return "le commentaire :"+commentaire.getBody()+" est caché";
+    }
+
+    public String showComment(Integer id){
+        Commentaire commentaire = commentaireRepository.findById(id).get();
+        commentaire.setVisibility(true);
+        commentaireRepository.save(commentaire);
+        System.out.println("le commentaire :"+commentaire.getBody()+" est validé");
+        return "le commentaire :"+commentaire.getBody()+" est validé";
     }
 }

@@ -44,4 +44,14 @@ public class CommentController {
 
         return "the comment :"+ commentaire.getBody() + " of the article :"+commentaire.getArticle().getId()+" has been added from the user :"+commentaire.getUser().getFirstName()+" "+commentaire.getUser().getLastName();
     }
+
+    @GetMapping("/hide-comment/{id}")
+    public String hideComment(@PathVariable Integer id){
+        return commentService.hideComment(id);
+    }
+
+    @GetMapping("/show-comment/{id}")
+    public String showComment(@PathVariable Integer id){
+        return commentService.showComment(id);
+    }
 }
