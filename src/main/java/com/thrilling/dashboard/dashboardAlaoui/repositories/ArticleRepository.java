@@ -10,5 +10,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
+    @Query("select count(a) from Article a")
+    long countFirstBy();
 
 }

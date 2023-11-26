@@ -19,6 +19,11 @@ public class ArticleController {
 
     @Autowired
     ArticleService service;
+
+    @GetMapping("/total-article")
+    public long totalArticle(){
+        return service.totalArticle();
+    }
     @PostMapping("/post-article")
     public String postArticle(@RequestBody PostedArticle article){
         service.saveArticle(article);

@@ -16,4 +16,7 @@ public interface CommentaireRepository extends JpaRepository<Commentaire,Integer
 
     List<Commentaire> findAllByArticle(Article article);
 
+    @Query("select count(c) from Commentaire c")
+    long countFirstBy();
+
 }

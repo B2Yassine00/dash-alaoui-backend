@@ -25,6 +25,11 @@ public class CommentController {
     @Autowired
     private ArticleService articleService;
 
+    @GetMapping("/total-comment")
+    public long totalComment(){
+        return commentService.totalComment();
+    }
+
     @GetMapping("/list-comments")
     public List<ListedComment> listComments(){
 

@@ -29,6 +29,10 @@ public class CommentService {
     @Autowired
     private UserRepository userRepository;
 
+    public long totalComment(){
+        return commentaireRepository.countFirstBy();
+    }
+
     public List<ListedComment> listedComments(){
         List<Commentaire> comments = commentaireRepository.findAll();
         List<ListedComment> listedComments = new ArrayList<>();

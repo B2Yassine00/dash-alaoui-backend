@@ -23,6 +23,10 @@ public class ArticleService {
     @Autowired
     private CommentaireRepository commentaireRepository;
 
+    public long totalArticle(){
+        return repository.countFirstBy();
+    }
+
     public Article saveArticle(PostedArticle article){
         Article article1 = new Article();
         article1.setTitle(article.getTitle());
