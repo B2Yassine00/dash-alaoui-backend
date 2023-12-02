@@ -1,12 +1,12 @@
 package com.thrilling.dashboard.dashboardAlaoui.controller;
 
+import com.thrilling.dashboard.dashboardAlaoui.DTO.ListedUser;
 import com.thrilling.dashboard.dashboardAlaoui.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -21,4 +21,15 @@ public class UserController {
     public long totalArticle(){
         return service.totalUser();
     }
+
+    @GetMapping("/all-users")
+    public List<ListedUser> listUsers(){
+        return service.listUser();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id){
+        return service.deleteUser(id);
+    }
+
 }
