@@ -52,4 +52,8 @@ public class ArticleService {
         }
         return listedArticles;
     }
+
+    public Article save(Article article) {
+        return repository.save(article);
+    }
 }

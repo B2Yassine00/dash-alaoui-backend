@@ -40,4 +40,11 @@ public class ArticleController {
         Article article = service.findArticleById(id);
         return new ArticleDTO(article.getId(),article.getTitle(),article.getBody(), article.getLikes(),article.isVisibility(),article.getCreated_at(),article.getUpdated_at());
     }
+
+    @GetMapping("/like-article/{id}")
+    public int likeArticle(@PathVariable int id){
+        Article article = service.findArticleById(id);
+        article.setLikes(1+article.getLikes());
+        return service.save(article).getLikes();
+    }
 }
